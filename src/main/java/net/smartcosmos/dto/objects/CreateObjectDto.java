@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateObjectDTO {
+public class CreateObjectDto {
     @NotNull
     private String objectUrn;
     @NotNull
