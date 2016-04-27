@@ -1,17 +1,16 @@
 package net.smartcosmos.dto.objects;
 
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author voor
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateObjectRequest {
+public class ObjectCreate {
     @NotNull
     private String objectUrn;
     @NotNull

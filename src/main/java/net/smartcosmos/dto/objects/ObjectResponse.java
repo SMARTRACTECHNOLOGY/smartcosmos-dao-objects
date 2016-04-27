@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetObjectResponse {
+public class ObjectResponse {
     private final String urn;
 
     private final String objectUrn;

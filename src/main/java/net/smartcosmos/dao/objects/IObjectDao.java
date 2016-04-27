@@ -3,17 +3,17 @@ package net.smartcosmos.dao.objects;
 import java.util.List;
 import java.util.Optional;
 
-import net.smartcosmos.dto.objects.CreateObjectRequest;
-import net.smartcosmos.dto.objects.GetObjectResponse;
+import net.smartcosmos.dto.objects.ObjectCreate;
+import net.smartcosmos.dto.objects.ObjectResponse;
 
 /**
  * @author voor
  */
 public interface IObjectDao {
 
-    GetObjectResponse create(String accountUrn, CreateObjectRequest createObjectRequest);
+    ObjectResponse create(String accountUrn, ObjectCreate objectCreate);
 
-    Optional<GetObjectResponse> findByObjectUrn(String accountUrn, String objectUrn);
+    Optional<ObjectResponse> findByObjectUrn(String accountUrn, String objectUrn);
 
-    List<GetObjectResponse> getObjects();
+    List<ObjectResponse> getObjects();
 }
