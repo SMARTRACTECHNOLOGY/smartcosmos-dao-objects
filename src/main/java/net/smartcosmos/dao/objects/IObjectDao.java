@@ -13,7 +13,11 @@ public interface IObjectDao {
 
     ObjectResponse create(String accountUrn, ObjectCreate objectCreate);
 
+    Optional<ObjectResponse> update(String accountUrn, ObjectResponse objectUpdate);
+
     Optional<ObjectResponse> findByObjectUrn(String accountUrn, String objectUrn);
+
+    Optional<ObjectResponse> findByUrn(String accountUrn, String urn);
 
     List<ObjectResponse> getObjects();
 }
