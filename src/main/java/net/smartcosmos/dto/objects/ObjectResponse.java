@@ -16,10 +16,10 @@ public class ObjectResponse {
 
     private final String objectUrn;
 
-    private final String type;
+    private String type;
 
     private final String accountUrn;
-    private final String name;
+    private String name;
     private Long lastModifiedTimestamp;
     private String moniker;
     private String description;
