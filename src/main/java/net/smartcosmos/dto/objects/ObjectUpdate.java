@@ -19,6 +19,6 @@ public class ObjectUpdate {
     @NotNull
     private String name;
     private String description;
-    private Boolean activeFlag = true;
+    private Boolean activeFlag;
     private String moniker;
 }
