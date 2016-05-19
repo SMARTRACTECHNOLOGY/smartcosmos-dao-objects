@@ -15,7 +15,7 @@ public interface IObjectDao {
 
     ObjectResponse create(String accountUrn, ObjectCreate objectCreate);
 
-    Optional<ObjectResponse> update(String accountUrn, ObjectUpdate objectUpdate);
+    Optional<ObjectResponse> update(String accountUrn, ObjectUpdate objectUpdate) throws IllegalArgumentException;
 
     Optional<ObjectResponse> findByObjectUrn(String accountUrn, String objectUrn);
 
