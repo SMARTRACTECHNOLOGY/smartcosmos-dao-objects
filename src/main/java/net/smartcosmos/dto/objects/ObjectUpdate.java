@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import net.smartcosmos.dto.annotation.SmartCosmosIdDefined;
+import net.smartcosmos.data.objects.constraint.SmartCosmosIdDefined;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @AllArgsConstructor
 @Builder
 @SmartCosmosIdDefined
-public class ObjectUpdate {
+public class ObjectUpdate implements net.smartcosmos.data.objects.ObjectUpdate<String> {
     private String objectUrn;
     private String urn;
     private String type;

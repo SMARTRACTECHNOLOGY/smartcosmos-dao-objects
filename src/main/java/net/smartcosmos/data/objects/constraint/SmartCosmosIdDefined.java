@@ -1,6 +1,6 @@
-package net.smartcosmos.dto.annotation;
+package net.smartcosmos.data.objects.constraint;
 
-import net.smartcosmos.dto.objects.validation.ObjectsUpdateIdValidator;
+import net.smartcosmos.data.objects.constraint.validation.ObjectsUpdateIdValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -18,7 +18,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target({ANNOTATION_TYPE, TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = { ObjectsUpdateIdValidator.class} )
+@Constraint(validatedBy = { ObjectsUpdateIdValidator.class } )
 public @interface SmartCosmosIdDefined {
     String message() default "URN and Object URN may not be null, and only one of them may be defined";
 

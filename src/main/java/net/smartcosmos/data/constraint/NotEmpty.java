@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.annotation;
+package net.smartcosmos.data.constraint;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

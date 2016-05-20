@@ -1,7 +1,7 @@
-package net.smartcosmos.dto.objects.validation;
+package net.smartcosmos.data.objects.constraint.validation;
 
-import net.smartcosmos.dto.annotation.SmartCosmosIdDefined;
-import net.smartcosmos.dto.objects.ObjectUpdate;
+import net.smartcosmos.data.objects.ObjectUpdate;
+import net.smartcosmos.data.objects.constraint.SmartCosmosIdDefined;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -35,7 +35,10 @@ public class ObjectsUpdateIdValidator implements ConstraintValidator<SmartCosmos
         return true;
     }
 
-    private boolean isNullOrEmpty(String text) {
-        return text == null || text.isEmpty();
+    private boolean isNullOrEmpty(Object text) {
+        if (text instanceof String) {
+            return ((String) text).isEmpty();
+        }
+        return text == null;
     }
 }

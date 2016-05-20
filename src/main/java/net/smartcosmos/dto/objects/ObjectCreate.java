@@ -3,7 +3,7 @@ package net.smartcosmos.dto.objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Data;
-import net.smartcosmos.dto.annotation.NotEmpty;
+import net.smartcosmos.data.constraint.NotEmpty;
 
 import java.beans.ConstructorProperties;
 
