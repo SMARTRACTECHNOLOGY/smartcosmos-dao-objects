@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 public interface IObjectDao {
 
-    ObjectResponse create(String accountUrn, ObjectCreate objectCreate);
+    ObjectResponse create(String accountUrn, ObjectCreate objectCreate) throws ConstraintViolationException;
 
     Optional<ObjectResponse> update(String accountUrn, ObjectUpdate objectUpdate) throws ConstraintViolationException;
 
