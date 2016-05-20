@@ -25,7 +25,7 @@ public class ObjectsUpdateIdValidationTest {
     }
 
     @Test
-    public void validUrn() {
+    public void thatValidationPassesIfURNSet() {
 
         ObjectUpdate update = ObjectUpdate.builder()
             .urn("urn:uuid:MY-TEST-URN")
@@ -38,7 +38,7 @@ public class ObjectsUpdateIdValidationTest {
     }
 
     @Test
-    public void validObjectUrn() {
+    public void thatValidationPassesIfObjectURNSet() {
 
         ObjectUpdate update = ObjectUpdate.builder()
             .objectUrn("urn:MY-TEST-OBJECT-URN")
@@ -51,7 +51,7 @@ public class ObjectsUpdateIdValidationTest {
     }
 
     @Test
-    public void invalid() {
+    public void thatMissingURNOrObjectURNFailsValidation() {
         ObjectUpdate update = ObjectUpdate.builder()
             .build();
 
@@ -64,7 +64,7 @@ public class ObjectsUpdateIdValidationTest {
     }
 
     @Test
-    public void overspecified() {
+    public void thatSettingBothURNAndObjectURNFailsValidation() {
         ObjectUpdate update = ObjectUpdate.builder()
             .urn("urn:uuid:MY-TEST-URN")
             .objectUrn("urn:MY-TEST-OBJECT-URN")
@@ -76,5 +76,51 @@ public class ObjectsUpdateIdValidationTest {
         assertFalse(constraintViolations.isEmpty());
         assertEquals( 1, constraintViolations.size() );
         assertEquals("either URN or Object URN may be defined", constraintViolations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void thatEmptyURNFailsValidation() {
+
+        ObjectUpdate update = ObjectUpdate.builder()
+            .urn("")
+            .build();
+
+        Set<ConstraintViolation<ObjectUpdate>> constraintViolations =
+            validator.validate(update);
+
+        assertFalse(constraintViolations.isEmpty());
+        assertEquals( 1, constraintViolations.size() );
+        assertEquals("URN and Object URN may not be null", constraintViolations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void thatEmptyObjectURNFailsValidation() {
+
+        ObjectUpdate update = ObjectUpdate.builder()
+            .objectUrn("")
+            .build();
+
+        Set<ConstraintViolation<ObjectUpdate>> constraintViolations =
+            validator.validate(update);
+
+        assertFalse(constraintViolations.isEmpty());
+        assertEquals( 1, constraintViolations.size() );
+        assertEquals("URN and Object URN may not be null", constraintViolations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void thatEmptyURNAndObjectURNFailsValidation() {
+
+        ObjectUpdate update = ObjectUpdate.builder()
+            .urn("")
+            .objectUrn("")
+            .build();
+
+        Set<ConstraintViolation<ObjectUpdate>> constraintViolations =
+            validator.validate(update);
+
+        assertFalse(constraintViolations.isEmpty());
+        assertEquals( 1, constraintViolations.size() );
+        assertEquals("URN and Object URN may not be null", constraintViolations.iterator().next().getMessage());
     }
 }

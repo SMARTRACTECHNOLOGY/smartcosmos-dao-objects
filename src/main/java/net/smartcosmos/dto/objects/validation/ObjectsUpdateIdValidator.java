@@ -22,7 +22,7 @@ public class ObjectsUpdateIdValidator implements ConstraintValidator<SmartCosmos
         // we would end up with multiple violations.
         constraintValidatorContext.disableDefaultConstraintViolation();
 
-        if (objectUpdate.getUrn() == null && objectUpdate.getObjectUrn() == null) {
+        if (isNullOrEmpty(objectUpdate.getUrn()) && isNullOrEmpty(objectUpdate.getObjectUrn())) {
             constraintValidatorContext.buildConstraintViolationWithTemplate("URN and Object URN may not be null").addConstraintViolation();
             return false;
         }
@@ -33,5 +33,9 @@ public class ObjectsUpdateIdValidator implements ConstraintValidator<SmartCosmos
         }
 
         return true;
+    }
+
+    private boolean isNullOrEmpty(String text) {
+        return text == null || text.isEmpty();
     }
 }
