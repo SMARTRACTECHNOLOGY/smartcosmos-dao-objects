@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.objects.validation;
+package net.smartcosmos.data.objects.constraint.validation;
 
 import net.smartcosmos.dto.objects.ObjectUpdate;
 import org.junit.BeforeClass;
