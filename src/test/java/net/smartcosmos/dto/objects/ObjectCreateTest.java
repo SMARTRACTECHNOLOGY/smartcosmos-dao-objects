@@ -50,7 +50,7 @@ public class ObjectCreateTest {
     }
 
     @Test
-    public void thatObjectCreateMustHaveEmptyObjectURN() {
+    public void thatObjectCreateMustNotHaveEmptyObjectURN() {
 
         ObjectCreate objectCreate = ObjectCreate.builder()
             .objectUrn("")
