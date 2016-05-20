@@ -1,9 +1,10 @@
 package net.smartcosmos.dao.objects;
 
 import net.smartcosmos.dto.objects.ObjectCreate;
-import net.smartcosmos.dto.objects.ObjectUpdate;
 import net.smartcosmos.dto.objects.ObjectResponse;
+import net.smartcosmos.dto.objects.ObjectUpdate;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -13,9 +14,9 @@ import java.util.Optional;
  */
 public interface IObjectDao {
 
-    ObjectResponse create(String accountUrn, ObjectCreate objectCreate);
+    ObjectResponse create(String accountUrn, ObjectCreate objectCreate) throws ConstraintViolationException;
 
-    Optional<ObjectResponse> update(String accountUrn, ObjectUpdate objectUpdate);
+    Optional<ObjectResponse> update(String accountUrn, ObjectUpdate objectUpdate) throws ConstraintViolationException;
 
     Optional<ObjectResponse> findByObjectUrn(String accountUrn, String objectUrn);
 
