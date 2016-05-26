@@ -3,7 +3,6 @@ package net.smartcosmos.dto.objects;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
 import lombok.Data;
-import net.smartcosmos.dto.annotation.NotEmpty;
 
 import java.beans.ConstructorProperties;
 
@@ -13,11 +12,8 @@ import java.beans.ConstructorProperties;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ObjectCreate {
-    @NotEmpty
     private String objectUrn;
-    @NotEmpty
     private String type;
-    @NotEmpty
     private String name;
     private String description;
     private Boolean activeFlag;
