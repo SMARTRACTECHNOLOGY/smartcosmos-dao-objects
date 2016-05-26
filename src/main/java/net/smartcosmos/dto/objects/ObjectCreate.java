@@ -6,9 +6,6 @@ import lombok.Data;
 
 import java.beans.ConstructorProperties;
 
-/**
- * @author voor
- */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ObjectCreate {
