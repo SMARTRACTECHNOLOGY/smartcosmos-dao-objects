@@ -74,25 +74,45 @@ public interface IObjectDao {
      */
     public static enum QueryParameterType {
         /**
-         * Search for Things with by urn.
+         * Search for Things by urn.
          */
         OBJECT_URN_LIKE("objectUrnLike"),
         /**
-         * Search for things by type.
+         * Actual field name.
+         */
+        OBJECT_URN_FIELD_NAME("objectUrn"),
+        /**
+         * Search for Things by type.
          */
         TYPE("type"),
         /**
-         * Search for things by name.
+         * Actual field name.
+         */
+        TYPE_FIELD_NAME("type"),
+        /**
+         * Search for Things by name.
          */
         NAME_LIKE("nameLike"),
         /**
-         * Search for things by moniker.
+         * Actual field name.
+         */
+        NAME_FIELD_NAME("name"),
+        /**
+         * Search for Things by moniker.
          */
         MONIKER_LIKE("monikerLike"),
         /**
-         * Search for things by the timestamp it was last modified.
+         * Actual field name.
          */
-        MODIFIED_AFTER("modifiedAfter");
+        MONIKER_FIELD_NAME("moniker"),
+        /**
+         * Search for Things by the timestamp it was last modified.
+         */
+        MODIFIED_AFTER("modifiedAfter"),
+        /**
+         * Actual field name.
+         */
+        MODIFIED_AFTER_FIELD_NAME("lastModified");
 
         private String parameterName;
 
