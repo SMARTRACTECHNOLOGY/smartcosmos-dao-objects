@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public interface IObjectDao {
+public interface ObjectDao {
 
     /**
      * Creates an object in the realm of a given account.
