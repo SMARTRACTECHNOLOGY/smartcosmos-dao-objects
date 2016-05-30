@@ -74,6 +74,10 @@ public interface ObjectDao {
      */
     public static enum QueryParameterType {
         /**
+         * Flag indicating exact String matching.
+         */
+        EXACT("exact"),
+        /**
          * Search for Things by urn.
          */
         OBJECT_URN_LIKE("objectUrnLike"),
