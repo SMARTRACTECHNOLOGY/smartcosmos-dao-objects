@@ -5,6 +5,7 @@ import net.smartcosmos.dto.objects.ObjectResponse;
 import net.smartcosmos.dto.objects.ObjectUpdate;
 
 import javax.validation.ConstraintViolationException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -57,6 +58,15 @@ public interface ObjectDao {
      * @return the {@link ObjectResponse} instance for the retrieved object or {@code empty} if the object does not exist
      */
     Optional<ObjectResponse> findByUrn(String accountUrn, String urn);
+
+    /**
+     * Finds all objects matching an input collection of URNs in the realm of a given account.
+     *
+     * @param accountUrn the account URN
+     * @param urns a collection of system-assigned URNs
+     * @return the {@link ObjectResponse} instance for the retrieved object or {@code empty} if the object does not exist
+     */
+    List<ObjectResponse> findByUrns(String accountUrn, Collection<String> urns);
 
     List<ObjectResponse> getObjects();
 
