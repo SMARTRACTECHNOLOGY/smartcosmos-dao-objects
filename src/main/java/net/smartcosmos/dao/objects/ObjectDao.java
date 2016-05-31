@@ -64,9 +64,9 @@ public interface ObjectDao {
      *
      * @param accountUrn the account URN
      * @param urns a collection of system-assigned URNs
-     * @return the {@link ObjectResponse} instance for the retrieved object or {@code empty} if the object does not exist
+     * @return a List of Optional<ObjectResponse>, some of which may be empty.
      */
-    List<ObjectResponse> findByUrns(String accountUrn, Collection<String> urns);
+    List<Optional<ObjectResponse>> findByUrns(String accountUrn, Collection<String> urns);
 
     List<ObjectResponse> getObjects();
 
