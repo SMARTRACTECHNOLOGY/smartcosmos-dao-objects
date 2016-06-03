@@ -1,14 +1,21 @@
 package net.smartcosmos.dto.objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ObjectCreate {
+
+    private static final int VERSION = 1;
+    @Setter(AccessLevel.NONE)
+    private int version = VERSION;
+
     private String objectUrn;
     private String type;
     private String name;
@@ -26,5 +33,7 @@ public class ObjectCreate {
         this.description = description;
         this.activeFlag = activeFlag != null ? activeFlag : true;
         this.moniker = moniker;
+
+        this.version = VERSION;
     }
 }
