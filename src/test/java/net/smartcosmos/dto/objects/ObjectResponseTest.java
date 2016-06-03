@@ -1,12 +1,13 @@
 package net.smartcosmos.dto.objects;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class ObjectResponseTest {
 
@@ -30,5 +31,24 @@ public class ObjectResponseTest {
             // that's what we expect
         }
         assertNull(getVersion);
+    }
+
+    @Test
+    public void thatObjectMapperIgnoresVersion() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        ObjectResponse response = ObjectResponse.builder()
+            .type("entityReferenceType")
+            .name("name")
+            .lastModifiedTimestamp(123L)
+            .urn("urn")
+            .build();
+
+        assertNotEquals(0, response.getVersion());
+
+        String jsonString = mapper.writeValueAsString(response);
+        JSONObject jsonObject = new JSONObject(jsonString);
+
+        assertFalse(jsonObject.has("version"));
     }
 }
