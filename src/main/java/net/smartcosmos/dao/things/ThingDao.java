@@ -80,10 +80,29 @@ public interface ThingDao {
     /**
      * Return all things in the realm of a given tenant.
      *
-     * @param tenantId
+     * @param tenantId the tenant ID
      * @param page the number of the results page
      * @param size the size of a results page
      * @return
      */
     List<ThingResponse> findAll(String tenantId, Long page, Long size);
+
+    /**
+     * Deletes a thing matching a specified ID in the realm of a given tenant.
+     *
+     * @param tenantId  the tenant ID
+     * @param id the thing's system-assigned ID
+     * @return the {@link ThingResponse} instance for the deleted thing or {@code empty} if the thing did not exist
+     */
+    Optional<ThingResponse> deleteById(String tenantId, String id);
+
+    /**
+     * Deletes a thing matching a specified type and URN in the realm of a given tenant.
+     *
+     * @param tenantId  the tenant ID
+     * @param type the thing TYPE
+     * @param urn the thing URN
+     * @return the {@link ThingResponse} instance for the deleted thing or {@code empty} if the thing did not exist
+     */
+    Optional<ThingResponse> deleteByTypeAndUrn(String tenantId, String type, String urn);
 }
