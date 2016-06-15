@@ -19,15 +19,15 @@ public class ThingUpdate {
     private String id;
     private String urn;
     private String type;
-    private Boolean activeFlag;
+    private Boolean active;
 
     @Builder
-    @ConstructorProperties({"id", "urn", "type", "activeFlag"})
-    public ThingUpdate(String id, String urn, String type, Boolean activeFlag) {
+    @ConstructorProperties({"id", "urn", "type", "active"})
+    public ThingUpdate(String id, String urn, String type, Boolean active) {
         this.id = id;
         this.urn = urn;
         this.type = type;
-        this.activeFlag = activeFlag;
+        this.active = active;
 
         this.version = VERSION;
     }

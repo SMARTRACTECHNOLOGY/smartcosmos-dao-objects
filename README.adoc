@@ -1,7 +1,7 @@
-= SMART COSMOS DAO Objects
+= SMART COSMOS DAO Things
 SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
 ifdef::env-github[:USER: SMARTRACTECHNOLOGY]
-ifdef::env-github[:REPO: smartcosmos-dao-things]
+ifdef::env-github[:REPO: smartcosmos-dao-objects]
 ifdef::env-github[:BRANCH: master]
 
 image::https://travis-ci.org/{USER}/{REPO}.svg?branch={BRANCH}[Build Status, link=https://travis-ci.org/{USER}/{REPO}]

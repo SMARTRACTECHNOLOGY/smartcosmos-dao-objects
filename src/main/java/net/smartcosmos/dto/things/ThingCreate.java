@@ -18,16 +18,16 @@ public class ThingCreate {
 
     private String urn;
     private String type;
-    private Boolean activeFlag;
+    private Boolean active;
 
     @Builder
-    @ConstructorProperties({"urn", "type", "activeFlag"})
-    public ThingCreate(String urn, String type, Boolean activeFlag)
+    @ConstructorProperties({"urn", "type", "active"})
+    public ThingCreate(String urn, String type, Boolean active)
     {
         this.urn = urn;
 
         this.type = type;
-        this.activeFlag = activeFlag != null ? activeFlag : true;
+        this.active = active != null ? active : true;
 
         this.version = VERSION;
     }

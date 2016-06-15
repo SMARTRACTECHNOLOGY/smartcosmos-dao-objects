@@ -13,10 +13,10 @@ import static org.junit.Assert.*;
 public class ThingCreateTest {
 
     @Test
-    public void thatThingCreateAlwaysHasActiveFlag() throws Exception {
+    public void thatThingCreateAlwaysHasActive() throws Exception {
         ThingCreate thingCreate = ThingCreate.builder().urn("urn").type("type").build();
 
-        assertTrue(thingCreate.getActiveFlag());
+        assertTrue(thingCreate.getActive());
     }
 
     @Test

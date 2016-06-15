@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface ThingDao {
 
     /**
-     * Creates a thing in the realm of a given account.
+     * Creates a thing in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
      * @param thingCreate the thing to create
@@ -23,7 +23,7 @@ public interface ThingDao {
     ThingResponse create(String tenantId, ThingCreate thingCreate) throws ConstraintViolationException;
 
     /**
-     * Updates a thing in the realm of a given account.
+     * Updates a thing in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
      * @param thingUpdate the thing to update
@@ -33,25 +33,27 @@ public interface ThingDao {
     Optional<ThingResponse> update(String tenantId, ThingUpdate thingUpdate) throws ConstraintViolationException;
 
     /**
-     * Finds a thing matching a specified URN in the realm of a given account.
+     * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
+     * @param type the thing TYPE
      * @param urn the thing URN
      * @return the {@link ThingResponse} instance for the retrieved thing or {@code empty} if the thing does not exist
      */
-    Optional<ThingResponse> findByUrn(String tenantId, String urn);
+    Optional<ThingResponse> findByTypeAndUrn(String tenantId, String type, String urn);
 
     /**
-     * Finds things matching a specified URN start in the realm of a given account.
+     * Finds things of TYPE matching a specified URN start in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
+     * @param type the thing TYPE
      * @param urnStartsWith the first characters of the thing URN
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByUrnStartsWith(String tenantId, String urnStartsWith);
+    List<ThingResponse> findByTypeAndUrnStartsWith(String tenantId, String type, String urnStartsWith);
 
     /**
-     * Finds a thing matching a specified URN in the realm of a given account.
+     * Finds a thing matching a specified URN in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
      * @param id the thing's system-assigned ID
@@ -60,7 +62,7 @@ public interface ThingDao {
     Optional<ThingResponse> findById(String tenantId, String id);
 
     /**
-     * Finds all things matching an input collection of URNs in the realm of a given account.
+     * Finds all things matching an input collection of URNs in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
      * @param ids a collection of system-assigned IDs
@@ -71,7 +73,7 @@ public interface ThingDao {
     List<ThingResponse> getThings();
 
     /**
-     * Finds things matching specified query parameters in the realm of given account.
+     * Finds things matching specified query parameters in the realm of given tenant.
      *
      * @param tenantId the tenant ID
      * @param parameters the query parameters
