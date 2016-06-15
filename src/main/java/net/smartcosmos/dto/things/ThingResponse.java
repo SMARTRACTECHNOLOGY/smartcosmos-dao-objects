@@ -21,15 +21,17 @@ public class ThingResponse {
     private final String id;
     private final String urn;
     private final String type;
+    private final String tenantId;
     private Boolean active;
 
     @Builder
-    @ConstructorProperties({"id", "urn", "type", "active"})
-    public ThingResponse(String id, String urn, String type, Boolean active) {
+    @ConstructorProperties({"id", "urn", "type", "tenantId", "active"})
+    public ThingResponse(String id, String urn, String type, String tenantId, Boolean active) {
         this.id = id;
         this.urn = urn;
         this.type = type;
         this.active = active;
+        this.tenantId = tenantId;
 
         this.version = VERSION;
     }
