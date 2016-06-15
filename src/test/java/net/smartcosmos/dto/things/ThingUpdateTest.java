@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.objects;
+package net.smartcosmos.dto.things;
 
 import org.junit.Test;
 
@@ -8,11 +8,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-public class ObjectUpdateTest {
+public class ThingUpdateTest {
 
     @Test
     public void thatVersionIsSet() {
-        ObjectUpdate entity = ObjectUpdate.builder().build();
+        ThingUpdate entity = ThingUpdate.builder().build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -25,7 +25,7 @@ public class ObjectUpdateTest {
     public void thatVersionHasNoSetter() {
         Method getVersion = null;
         try {
-            getVersion = ObjectUpdate.class.getDeclaredMethod("setVersion", int.class);
+            getVersion = ThingUpdate.class.getDeclaredMethod("setVersion", int.class);
         } catch (NoSuchMethodException e) {
             // that's what we expect
         }

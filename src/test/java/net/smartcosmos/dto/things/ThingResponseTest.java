@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.objects;
+package net.smartcosmos.dto.things;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,13 +7,18 @@ import org.junit.Test;
 
 import java.lang.reflect.Method;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-public class ObjectResponseTest {
+
+public class ThingResponseTest {
 
     @Test
     public void thatVersionIsSet() {
-        ObjectResponse entity = ObjectResponse.builder().build();
+        ThingResponse entity = ThingResponse.builder().build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -26,7 +31,7 @@ public class ObjectResponseTest {
     public void thatVersionHasNoSetter() {
         Method getVersion = null;
         try {
-            getVersion = ObjectResponse.class.getDeclaredMethod("setVersion", int.class);
+            getVersion = ThingResponse.class.getDeclaredMethod("setVersion", int.class);
         } catch (NoSuchMethodException e) {
             // that's what we expect
         }
@@ -37,10 +42,8 @@ public class ObjectResponseTest {
     public void thatObjectMapperIgnoresVersion() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
 
-        ObjectResponse response = ObjectResponse.builder()
+        ThingResponse response = ThingResponse.builder()
             .type("entityReferenceType")
-            .name("name")
-            .lastModifiedTimestamp(123L)
             .urn("urn")
             .build();
 
