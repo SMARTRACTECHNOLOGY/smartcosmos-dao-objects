@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.objects;
+package net.smartcosmos.dto.things;
 
 import org.junit.Test;
 
@@ -7,21 +7,21 @@ import java.lang.reflect.Method;
 import static org.junit.Assert.*;
 
 /**
- * Basic Unit Tests for the ObjectCreate object...
+ * Basic Unit Tests for the ThingCreate object...
  */
 @SuppressWarnings("Duplicates")
-public class ObjectCreateTest {
+public class ThingCreateTest {
 
     @Test
-    public void thatObjectCreateAlwaysHasActiveFlag() throws Exception {
-        ObjectCreate objectCreate = ObjectCreate.builder().objectUrn("objectUrn").type("type").name("name").build();
+    public void thatThingCreateAlwaysHasActiveFlag() throws Exception {
+        ThingCreate thingCreate = ThingCreate.builder().urn("urn").type("type").build();
 
-        assertTrue(objectCreate.getActiveFlag());
+        assertTrue(thingCreate.getActiveFlag());
     }
 
     @Test
     public void thatVersionIsSet() {
-        ObjectCreate entity = ObjectCreate.builder().build();
+        ThingCreate entity = ThingCreate.builder().build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -34,7 +34,7 @@ public class ObjectCreateTest {
     public void thatVersionHasNoSetter() {
         Method getVersion = null;
         try {
-            getVersion = ObjectCreate.class.getDeclaredMethod("setVersion", int.class);
+            getVersion = ThingCreate.class.getDeclaredMethod("setVersion", int.class);
         } catch (NoSuchMethodException e) {
             // that's what we expect
         }

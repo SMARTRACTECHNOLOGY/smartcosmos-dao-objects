@@ -1,4 +1,4 @@
-package net.smartcosmos.dto.objects;
+package net.smartcosmos.dto.things;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
@@ -10,29 +10,24 @@ import java.beans.ConstructorProperties;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ObjectCreate {
+public class ThingCreate {
 
     private static final int VERSION = 1;
     @Setter(AccessLevel.NONE)
     private int version = VERSION;
 
-    private String objectUrn;
+    private String urn;
     private String type;
-    private String name;
-    private String description;
     private Boolean activeFlag;
-    private String moniker;
 
     @Builder
-    @ConstructorProperties({"objectUrn", "type", "name", "description", "activeFlag", "moniker"})
-    public ObjectCreate(String objectUrn, String type, String name, String description, Boolean activeFlag, String moniker)
+    @ConstructorProperties({"urn", "type", "activeFlag"})
+    public ThingCreate(String urn, String type, Boolean activeFlag)
     {
-        this.objectUrn = objectUrn;
+        this.urn = urn;
+
         this.type = type;
-        this.name = name;
-        this.description = description;
         this.activeFlag = activeFlag != null ? activeFlag : true;
-        this.moniker = moniker;
 
         this.version = VERSION;
     }
