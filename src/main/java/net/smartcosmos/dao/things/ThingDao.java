@@ -92,9 +92,9 @@ public interface ThingDao {
      *
      * @param tenantId  the tenant ID
      * @param id the thing's system-assigned ID
-     * @return the {@link ThingResponse} instance for the deleted thing or {@code empty} if the thing did not exist
+     * @return the list of deleted {@link ThingResponse} instances
      */
-    Optional<ThingResponse> deleteById(String tenantId, String id);
+    List<ThingResponse> deleteById(String tenantId, String id);
 
     /**
      * Deletes a thing matching a specified type and URN in the realm of a given tenant.
@@ -102,7 +102,7 @@ public interface ThingDao {
      * @param tenantId  the tenant ID
      * @param type the thing TYPE
      * @param urn the thing URN
-     * @return the {@link ThingResponse} instance for the deleted thing or {@code empty} if the thing did not exist
+     * @return the list of deleted {@link ThingResponse} instances
      */
-    Optional<ThingResponse> deleteByTypeAndUrn(String tenantId, String type, String urn);
+    List<ThingResponse> deleteByTypeAndUrn(String tenantId, String type, String urn);
 }
