@@ -7,7 +7,6 @@ import net.smartcosmos.dto.things.ThingUpdate;
 import javax.validation.ConstraintViolationException;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface ThingDao {
@@ -48,9 +47,15 @@ public interface ThingDao {
      * @param tenantId the tenant ID
      * @param type the thing TYPE
      * @param urnStartsWith the first characters of the thing URN
+     * @param page the number of the results page
+     * @param size the size of a results page*
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByTypeAndUrnStartsWith(String tenantId, String type, String urnStartsWith);
+    List<ThingResponse> findByTypeAndUrnStartsWith(
+        String tenantId,
+        String type,
+        String urnStartsWith,
+        Long page, Long size);
 
     /**
      * Finds a thing matching a specified URN in the realm of a given tenant.
@@ -66,63 +71,19 @@ public interface ThingDao {
      *
      * @param tenantId the tenant ID
      * @param ids a collection of system-assigned IDs
+     * @param page the number of the results page
+     * @param size the size of a results page*
      * @return a List of Optional<ThingResponse>, some of which may be empty.
      */
-    List<Optional<ThingResponse>> findByIds(String tenantId, Collection<String> ids);
-
-    List<ThingResponse> getThings();
+    List<Optional<ThingResponse>> findByIds(String tenantId, Collection<String> ids, Long page, Long size);
 
     /**
-     * Finds things matching specified query parameters in the realm of given tenant.
+     * Return all things in the realm of a given tenant.
      *
-     * @param tenantId the tenant ID
-     * @param parameters the query parameters
-     * @return all things matching the query parameters
+     * @param tenantId
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @return
      */
-    List<ThingResponse> findByQueryParameters(String tenantId, Map<QueryParameterType, Object> parameters);
-
-    /**
-     * An Enum defining the query parameter type names when searching for Things in Objects.
-     */
-    public static enum QueryParameterType {
-        /**
-         * Flag indicating exact String matching.
-         */
-        EXACT("exact"),
-        /**
-         * Search for Things by urn.
-         */
-        URN_LIKE("urnLike"),
-        /**
-         * Actual field name.
-         */
-        URN_FIELD_NAME("urn"),
-        /**
-         * Search for Things by type.
-         */
-        TYPE("type"),
-        /**
-         * Actual field name.
-         */
-        MODIFIED_AFTER("modifiedAfter"),
-        /**
-         * Actual field name.
-         */
-        MODIFIED_AFTER_FIELD_NAME("lastModified");
-
-        private String parameterName;
-
-        private QueryParameterType(String name) {
-            parameterName = name;
-        }
-
-        /**
-         * The name of the parameter to be used in the query.
-         *
-         * @return the parameter type name as a String
-         */
-        public String typeName() {
-            return parameterName;
-        }
-    }
+    List<ThingResponse> findAll(String tenantId, Long page, Long size);
 }
