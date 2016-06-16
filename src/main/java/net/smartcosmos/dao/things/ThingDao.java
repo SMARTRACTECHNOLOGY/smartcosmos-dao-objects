@@ -22,14 +22,27 @@ public interface ThingDao {
     ThingResponse create(String tenantId, ThingCreate thingCreate) throws ConstraintViolationException;
 
     /**
-     * Updates a thing in the realm of a given tenant.
+     * Updates a thing identified by its type and URN in the realm of a given tenant.
      *
      * @param tenantId the tenant ID
-     * @param thingUpdate the thing to update
-     * @return an {@link ThingResponse} instance for the updated thing
+     * @param type the thing TYPE
+     * @param urn the thing URN
+     * @param updateThing the thing to update
+     * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
      * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
      */
-    Optional<ThingResponse> update(String tenantId, ThingUpdate thingUpdate) throws ConstraintViolationException;
+    Optional<ThingResponse> updateByTypeAndUrn(String tenantId, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
+
+    /**
+     * Updates a thing identified by its ID in the realm of a given tenant.
+     *
+     * @param tenantId the tenant ID
+     * @param id the thing ID
+     * @param updateThing the thing to update
+     * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
+     * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
+     */
+    Optional<ThingResponse> updateById(String tenantId, String id, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
      * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.

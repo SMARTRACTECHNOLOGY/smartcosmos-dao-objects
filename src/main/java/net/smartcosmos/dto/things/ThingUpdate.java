@@ -16,17 +16,11 @@ public class ThingUpdate {
     @Setter(AccessLevel.NONE)
     private int version = VERSION;
 
-    private String id;
-    private String urn;
-    private String type;
     private Boolean active;
 
     @Builder
-    @ConstructorProperties({"id", "urn", "type", "active"})
-    public ThingUpdate(String id, String urn, String type, Boolean active) {
-        this.id = id;
-        this.urn = urn;
-        this.type = type;
+    @ConstructorProperties({"active"})
+    public ThingUpdate(Boolean active) {
         this.active = active;
 
         this.version = VERSION;
