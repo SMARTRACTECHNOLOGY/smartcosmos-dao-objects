@@ -31,7 +31,7 @@ public interface ThingDao {
      * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
      * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
      */
-    Optional<ThingResponse> update(String tenantId, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
+    Optional<ThingResponse> updateByTypeAndUrn(String tenantId, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
      * Updates a thing identified by its ID in the realm of a given tenant.
@@ -42,7 +42,7 @@ public interface ThingDao {
      * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
      * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
      */
-    Optional<ThingResponse> update(String tenantId, String id, ThingUpdate updateThing) throws ConstraintViolationException;
+    Optional<ThingResponse> updateById(String tenantId, String id, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
      * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.
