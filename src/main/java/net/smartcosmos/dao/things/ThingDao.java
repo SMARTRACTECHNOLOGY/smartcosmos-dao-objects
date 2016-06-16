@@ -68,7 +68,8 @@ public interface ThingDao {
         String tenantId,
         String type,
         String urnStartsWith,
-        Long page, Long size);
+        Long page,
+        Integer size);
 
     /**
      * Finds a thing matching a specified URN in the realm of a given tenant.
@@ -84,11 +85,9 @@ public interface ThingDao {
      *
      * @param tenantId the tenant ID
      * @param ids a collection of system-assigned IDs
-     * @param page the number of the results page
-     * @param size the size of a results page*
      * @return a List of Optional<ThingResponse>, some of which may be empty.
      */
-    List<Optional<ThingResponse>> findByIds(String tenantId, Collection<String> ids, Long page, Long size);
+    List<Optional<ThingResponse>> findByIds(String tenantId, Collection<String> ids);
 
     /**
      * Return all things in the realm of a given tenant.
@@ -96,9 +95,9 @@ public interface ThingDao {
      * @param tenantId the tenant ID
      * @param page the number of the results page
      * @param size the size of a results page
-     * @return
+     * @return the list of {@link ThingResponse} instances in the realm
      */
-    List<ThingResponse> findAll(String tenantId, Long page, Long size);
+    List<ThingResponse> findAll(String tenantId, Long page, Integer size);
 
     /**
      * Deletes a thing matching a specified ID in the realm of a given tenant.
