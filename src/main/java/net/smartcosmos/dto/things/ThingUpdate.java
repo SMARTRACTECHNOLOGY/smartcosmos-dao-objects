@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 
+@NoArgsConstructor
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ThingUpdate {
