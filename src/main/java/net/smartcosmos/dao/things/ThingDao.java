@@ -50,7 +50,7 @@ public interface ThingDao {
      * @param type the thing TYPE
      * @param urnStartsWith the first characters of the thing URN
      * @param page the number of the results page
-     * @param size the size of a results page*
+     * @param size the size of a results page
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
     List<ThingResponse> findByTypeAndUrnStartsWith(
