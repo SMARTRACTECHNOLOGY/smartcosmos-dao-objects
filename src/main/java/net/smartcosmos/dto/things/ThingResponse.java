@@ -22,14 +22,14 @@ public class ThingResponse {
     private int version = VERSION;
 
     @ApiModelProperty(required = true, dataType = "String",
-                      value = "The user specified URN of the thing. The size is constrained by the database implementation being used.")
+                      value = "The URN of the thing. The size and format are constrained by the database implementation being used.")
     private final String urn;
 
     @ApiModelProperty(required = true, dataType = "String",
                       value = "The user defined type of the thing.  The size is constrained by the database implementation being used.")
     private final String type;
 
-    @ApiModelProperty(required = true, dataType = "String", value = "The tenant ID of the owning account of the thing.")
+    @ApiModelProperty(required = true, dataType = "String", value = "The tenant URN of the owning account of the thing.")
     private final String tenantUrn;
 
     @ApiModelProperty(required = true, dataType = "Boolean", value = "Is the thing \"active\", defaults to true.")
