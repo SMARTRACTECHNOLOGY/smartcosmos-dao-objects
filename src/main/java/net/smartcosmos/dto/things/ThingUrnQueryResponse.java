@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import java.beans.ConstructorProperties;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -33,7 +34,7 @@ public class ThingUrnQueryResponse {
 
     @Builder
     @ConstructorProperties({"data", "notFound"})
-    public ThingUrnQueryResponse(List<ThingResponse> data, List<String> notFound) {
+    public ThingUrnQueryResponse(Collection<ThingResponse> data, Collection<String> notFound) {
 
         this.data = new ArrayList<>();
         if (data != null) {
