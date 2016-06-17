@@ -10,7 +10,8 @@ import lombok.Data;
 import lombok.Setter;
 
 import java.beans.ConstructorProperties;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,18 +25,25 @@ public class ThingUrnQueryResponse {
 
     @ApiModelProperty(required = true, dataType = "Collection of ThingResponse",
         value = "The collection of found things.")
-    private final Collection<ThingResponse> data;
+    private final List<ThingResponse> data;
 
     @ApiModelProperty(required = true, dataType = "Collection of String",
         value = "The collection of URNs that could not be found.")
-    private final Collection<String> notFound;
+    private final List<String> notFound;
 
     @Builder
     @ConstructorProperties({"data", "notFound"})
-    public ThingUrnQueryResponse(Collection<ThingResponse> data, Collection<String> notFound) {
+    public ThingUrnQueryResponse(List<ThingResponse> data, List<String> notFound) {
 
-        this.data = data;
-        this.notFound = notFound;
+        this.data = new ArrayList<>();
+        if (data != null) {
+            this.data.addAll(data);
+        }
+
+        this.notFound = new ArrayList<>();
+        if (notFound != null) {
+            this.notFound.addAll(notFound);
+        }
 
         this.version = VERSION;
     }
