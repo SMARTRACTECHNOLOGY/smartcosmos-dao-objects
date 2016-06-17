@@ -31,7 +31,7 @@ public interface ThingDao {
      * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
      * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
      */
-    Optional<ThingResponse> updateByTypeAndUrn(String tenantUrn, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
+    Optional<ThingResponse> update(String tenantUrn, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
      * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.
@@ -87,5 +87,5 @@ public interface ThingDao {
      * @param urn the thing URN
      * @return the list of deleted {@link ThingResponse} instances
      */
-    List<ThingResponse> deleteByTypeAndUrn(String tenantUrn, String type, String urn);
+    List<ThingResponse> delete(String tenantUrn, String type, String urn);
 }
