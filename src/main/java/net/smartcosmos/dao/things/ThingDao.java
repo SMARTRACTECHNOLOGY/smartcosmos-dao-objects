@@ -3,6 +3,7 @@ package net.smartcosmos.dao.things;
 import net.smartcosmos.dto.things.ThingCreate;
 import net.smartcosmos.dto.things.ThingResponse;
 import net.smartcosmos.dto.things.ThingUpdate;
+import net.smartcosmos.dto.things.ThingUrnQueryResponse;
 
 import javax.validation.ConstraintViolationException;
 import java.util.Collection;
@@ -80,9 +81,9 @@ public interface ThingDao {
      *
      * @param tenantUrn the tenant URN
      * @param urns a collection of system-assigned URNs
-     * @return a List of Optional<ThingResponse>, some of which may be empty.
+     * @return a {@link ThingUrnQueryResponse} instance containing a collection of {@link ThingResponse} instances, and a collection of not found URNs.
      */
-    List<Optional<ThingResponse>> findByUrns(String tenantUrn, Collection<String> urns);
+    ThingUrnQueryResponse findByUrns(String tenantUrn, Collection<String> urns);
 
     /**
      * Return all things in the realm of a given tenant.
