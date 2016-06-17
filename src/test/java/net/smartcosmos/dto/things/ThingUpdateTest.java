@@ -2,11 +2,9 @@ package net.smartcosmos.dto.things;
 
 import org.junit.Test;
 
-import java.lang.reflect.Method;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class ThingUpdateTest {
 
@@ -21,14 +19,53 @@ public class ThingUpdateTest {
     /**
      * This actually tests if Lombok is properly used.
      */
+    @Test(expected = NoSuchMethodException.class)
+    public void thatVersionHasNoSetter() throws Exception {
+        ThingUpdate.class.getDeclaredMethod("setVersion", int.class);
+    }
+
     @Test
-    public void thatVersionHasNoSetter() {
-        Method getVersion = null;
-        try {
-            getVersion = ThingUpdate.class.getDeclaredMethod("setVersion", int.class);
-        } catch (NoSuchMethodException e) {
-            // that's what we expect
-        }
-        assertNull(getVersion);
+    public void thatBuilderEmptyWorks() {
+        ThingUpdate thing = ThingUpdate.builder()
+            .build();
+        assertNotNull(thing);
+    }
+
+    @Test
+    public void thatBuilderActiveWorks() {
+        final Boolean active = false;
+
+        ThingUpdate thing = ThingUpdate.builder()
+            .active(active)
+            .build();
+        assertNotNull(thing);
+        assertFalse(thing.getActive());
+    }
+
+    @Test
+    public void thatGetterSetterActiveWorks() {
+        final Boolean active = true;
+
+        ThingUpdate thing = ThingUpdate.builder().build();
+        assertNotNull(thing);
+
+        thing.setActive(active);
+        assertEquals(active, thing.getActive());
+    }
+
+    @Test
+    public void testNoArgsConstructor() {
+        ThingUpdate thing = new ThingUpdate();
+        assertNotNull(thing);
+    }
+
+    @Test
+    public void testAllArgsConstructor() {
+        final Boolean active = true;
+
+        ThingUpdate thing = new ThingUpdate(active);
+        assertNotNull(thing);
+
+        assertEquals(active, thing.getActive());
     }
 }
