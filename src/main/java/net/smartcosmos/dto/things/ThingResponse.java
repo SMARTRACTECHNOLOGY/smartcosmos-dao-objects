@@ -33,7 +33,7 @@ public class ThingResponse {
     private final String tenantUrn;
 
     @ApiModelProperty(required = true, dataType = "Boolean", value = "Is the thing \"active\", defaults to true.")
-    private Boolean active;
+    private final Boolean active;
 
     @Builder
     @ConstructorProperties({"urn", "type", "tenantUrn", "active"})
