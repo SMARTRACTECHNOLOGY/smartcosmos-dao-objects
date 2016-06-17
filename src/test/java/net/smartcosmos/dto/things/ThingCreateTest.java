@@ -119,7 +119,7 @@ public class ThingCreateTest {
         assertNotNull(thing);
 
         assertEquals(urn, thing.getUrn());
-        thing.setType(type);
+        assertEquals(type, thing.getType());
         assertEquals(active, thing.getActive());
     }
 }
