@@ -34,17 +34,6 @@ public interface ThingDao {
     Optional<ThingResponse> updateByTypeAndUrn(String tenantUrn, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
-     * Updates a thing identified by its URN in the realm of a given tenant.
-     *
-     * @param tenantUrn the tenant URN
-     * @param urn the thing URN
-     * @param updateThing the thing to update
-     * @return an {@link ThingResponse} instance for the updated thing or {@code empty} if the thing does not exist
-     * @throws ConstraintViolationException if the {@link ThingUpdate} violates constraints enforced by the persistence service
-     */
-    Optional<ThingResponse> updateById(String tenantUrn, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
-
-    /**
      * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.
      *
      * @param tenantUrn the tenant URN
@@ -72,22 +61,13 @@ public interface ThingDao {
         Integer size);
 
     /**
-     * Finds a thing matching a specified URN in the realm of a given tenant.
-     *
-     * @param tenantUrn the tenant URN
-     * @param urn the thing's system-assigned URN
-     * @return the {@link ThingResponse} instance for the retrieved thing or {@code empty} if the thing does not exist
-     */
-    Optional<ThingResponse> findById(String tenantUrn, String urn);
-
-    /**
      * Finds all things matching an input collection of URNs in the realm of a given tenant.
      *
      * @param tenantUrn the tenant URN
      * @param urns a collection of system-assigned URNs
      * @return a List of Optional<ThingResponse>, some of which may be empty.
      */
-    List<Optional<ThingResponse>> findByIds(String tenantUrn, Collection<String> urns);
+    List<Optional<ThingResponse>> findByUrns(String tenantUrn, Collection<String> urns);
 
     /**
      * Return all things in the realm of a given tenant.
@@ -98,15 +78,6 @@ public interface ThingDao {
      * @return the list of {@link ThingResponse} instances in the realm
      */
     List<ThingResponse> findAll(String tenantUrn, Long page, Integer size);
-
-    /**
-     * Deletes a thing matching a specified URN in the realm of a given tenant.
-     *
-     * @param tenantUrn  the tenant URN
-     * @param urn the thing's system-assigned URN
-     * @return the list of deleted {@link ThingResponse} instances
-     */
-    List<ThingResponse> deleteById(String tenantUrn, String urn);
 
     /**
      * Deletes a thing matching a specified type and URN in the realm of a given tenant.
