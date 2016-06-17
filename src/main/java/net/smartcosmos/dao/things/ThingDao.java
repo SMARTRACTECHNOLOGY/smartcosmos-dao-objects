@@ -16,10 +16,10 @@ public interface ThingDao {
      *
      * @param tenantUrn the tenant URN
      * @param thingCreate the thing to create
-     * @return an {@link ThingResponse} instance for the created thing
+     * @return an {@link ThingResponse} instance for the created thing or {@code empty} if the thing already exists
      * @throws ConstraintViolationException if the {@link ThingCreate} violates constraints enforced by the persistence service
      */
-    ThingResponse create(String tenantUrn, ThingCreate thingCreate) throws ConstraintViolationException;
+    Optional<ThingResponse> create(String tenantUrn, ThingCreate thingCreate) throws ConstraintViolationException;
 
     /**
      * Updates a thing identified by its type and URN in the realm of a given tenant.
