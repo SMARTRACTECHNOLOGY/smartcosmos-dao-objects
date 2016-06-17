@@ -34,6 +34,21 @@ public interface ThingDao {
     Optional<ThingResponse> update(String tenantUrn, String type, String urn, ThingUpdate updateThing) throws ConstraintViolationException;
 
     /**
+     * Finds things of TYPE in the realm of a given tenant.
+     *
+     * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @return all things whose {@code urn} starts with {@code urnStartsWith}
+     */
+    List<ThingResponse> findByType(
+        String tenantUrn,
+        String type,
+        Long page,
+        Integer size);
+
+    /**
      * Finds a thing of TYPE matching a specified URN in the realm of a given tenant.
      *
      * @param tenantUrn the tenant URN
