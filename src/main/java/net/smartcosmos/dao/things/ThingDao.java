@@ -80,7 +80,7 @@ public interface ThingDao {
      *
      * @param tenantUrn the tenant URN
      * @param urns a collection of system-assigned URNs
-     * @return a {@link ThingUrnQueryResponse} instance containing a collection of {@link ThingResponse} instances, and a collection of not found URNs.
+     * @return a list containing all found {@link ThingResponse} instances.
      */
     List<ThingResponse> findByUrns(String tenantUrn, Collection<String> urns);
 
