@@ -2,6 +2,7 @@ package net.smartcosmos.dao.things;
 
 import net.smartcosmos.dto.things.ThingCreate;
 import net.smartcosmos.dto.things.ThingResponse;
+import net.smartcosmos.dto.things.ThingResponsePage;
 import net.smartcosmos.dto.things.ThingUpdate;
 
 import javax.validation.ConstraintViolationException;
@@ -64,15 +65,28 @@ public interface ThingDao {
      * @param tenantUrn the tenant URN
      * @param type the thing TYPE
      * @param urnStartsWith the first characters of the thing URN
-     * @param page the number of the results page
-     * @param size the size of a results page
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
     List<ThingResponse> findByTypeAndUrnStartsWith(
         String tenantUrn,
         String type,
+        String urnStartsWith);
+
+    /**
+     * Finds things of TYPE matching a specified URN start in the realm of a given tenant (paged).
+     *
+     * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
+     * @param urnStartsWith the first characters of the thing URN
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @return all things whose {@code urn} starts with {@code urnStartsWith}
+     */
+    ThingResponsePage<ThingResponse> findByTypeAndUrnStartsWith(
+        String tenantUrn,
+        String type,
         String urnStartsWith,
-        Long page,
+        Integer page,
         Integer size);
 
     /**
@@ -88,11 +102,19 @@ public interface ThingDao {
      * Return all things in the realm of a given tenant.
      *
      * @param tenantUrn the tenant URN
-     * @param page the number of the results page
-     * @param size the size of a results page
      * @return the list of {@link ThingResponse} instances in the realm
      */
-    List<ThingResponse> findAll(String tenantUrn, Long page, Integer size);
+    List<ThingResponse> findAll(String tenantUrn);
+
+    /**
+     * Return all things in the realm of a given tenant (paged).
+     *
+     * @param tenantUrn the tenant URN
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @return a page of {@link ThingResponse} instances in the realm
+     */
+    ThingResponsePage<ThingResponse> findAll(String tenantUrn, Integer page, Integer size);
 
     /**
      * Deletes a thing matching a specified type and URN in the realm of a given tenant.
@@ -103,4 +125,5 @@ public interface ThingDao {
      * @return the list of deleted {@link ThingResponse} instances
      */
     List<ThingResponse> delete(String tenantUrn, String type, String urn);
+
 }
