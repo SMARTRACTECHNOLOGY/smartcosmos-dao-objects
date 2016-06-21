@@ -6,12 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
 @ApiModel(description = "Meta information on paged responses received.")
 public class PageInformation {
-    private final Integer size;
-    private final Long totalElements;
-    private final Integer totalPages;
-    private final Integer number;
+    // primitive types because of default values
+    private final int size;
+    private final long totalElements;
+    private final int totalPages;
+    private final int number;
+
+    public PageInformation() {
+        this.size = 0;
+        this.totalElements = 0;
+        this.totalPages = 0;
+        this.number = 0;
+    }
 }
