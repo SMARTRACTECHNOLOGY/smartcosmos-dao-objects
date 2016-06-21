@@ -8,7 +8,7 @@ import lombok.Data;
 
 import java.beans.ConstructorProperties;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -16,12 +16,12 @@ import java.util.Collection;
 @ApiModel(description = "Paged response received when querying for Things.")
 public class Page<T> {
 
-    private final Collection<T> data;
+    private final List<T> data;
     private final PageInformation page;
 
     @Builder
     @ConstructorProperties({"data", "page"})
-    public Page(Collection<T> data, PageInformation page) {
+    public Page(List<T> data, PageInformation page) {
         this.data = new ArrayList<>();
         if (data != null) {
             this.data.addAll(data);
