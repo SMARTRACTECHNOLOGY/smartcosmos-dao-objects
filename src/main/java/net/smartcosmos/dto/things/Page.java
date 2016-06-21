@@ -11,7 +11,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties({"version"})
 @ApiModel(description = "Paged response received when querying for Things.")
-public class ThingResponsePage<T> {
+public class Page<T> {
 
     private final List<T> data;
     private final PageInformation page;

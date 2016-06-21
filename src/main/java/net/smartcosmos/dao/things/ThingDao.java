@@ -2,7 +2,7 @@ package net.smartcosmos.dao.things;
 
 import net.smartcosmos.dto.things.ThingCreate;
 import net.smartcosmos.dto.things.ThingResponse;
-import net.smartcosmos.dto.things.ThingResponsePage;
+import net.smartcosmos.dto.things.Page;
 import net.smartcosmos.dto.things.ThingUpdate;
 
 import javax.validation.ConstraintViolationException;
@@ -82,7 +82,7 @@ public interface ThingDao {
      * @param size the size of a results page
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    ThingResponsePage<ThingResponse> findByTypeAndUrnStartsWith(
+    Page<ThingResponse> findByTypeAndUrnStartsWith(
         String tenantUrn,
         String type,
         String urnStartsWith,
@@ -114,7 +114,7 @@ public interface ThingDao {
      * @param size the size of a results page
      * @return a page of {@link ThingResponse} instances in the realm
      */
-    ThingResponsePage<ThingResponse> findAll(String tenantUrn, Integer page, Integer size);
+    Page<ThingResponse> findAll(String tenantUrn, Integer page, Integer size);
 
     /**
      * Deletes a thing matching a specified type and URN in the realm of a given tenant.
