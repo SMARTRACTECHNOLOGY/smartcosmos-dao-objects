@@ -7,8 +7,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-@ApiModel(description = "Paged response received when querying for Things.")
 @Builder
+@ApiModel(description = "Meta information on paged responses received.")
 public class PageInformation {
     private final Integer size;
     private final Long totalElements;
