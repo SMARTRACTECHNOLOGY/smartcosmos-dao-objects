@@ -273,9 +273,4 @@ public interface ThingDao {
     List<ThingResponse> delete(String tenantUrn, String type, String urn);
 
     // endregion
-
-    enum SortOrder {
-        ASC,
-        DESC
-    }
 }
