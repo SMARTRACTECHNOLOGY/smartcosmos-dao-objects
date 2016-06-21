@@ -82,7 +82,7 @@ public interface ThingDao {
     Page<ThingResponse> findByType(
         String tenantUrn,
         String type,
-        Long page,
+        Integer page,
         Integer size);
 
     /**
