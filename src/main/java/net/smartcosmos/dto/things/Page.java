@@ -28,6 +28,16 @@ public class Page<T> {
         this.page = page;
     }
 
+    /*
+        The Lombok plugin in IntelliJ has some issues with generics, but Lombok itself is actually fine with that.
+        It just needs some assistance on the right type.
+        However, while Travis and the local machine were able to build the project and run tests, Jenkins wasn't for
+        some reason. That's why the @Builder annotation is de-lomboked for now.
+        That's what tests are for, right? :)
+
+        (see https://reinhard.codes/2015/07/14/project-lomboks-builder-annotation-and-generics/)
+     */
+
     public static <T>PageBuilder<T> builder() {
         return new PageBuilder<>();
     }
