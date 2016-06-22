@@ -1,29 +1,19 @@
 package net.smartcosmos.dto.things;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-
 public class PageTest {
-
-    /*
-        The Lombok plugin in IntelliJ has some issues with generics, but Lombok itself is fine with that.
-        It just needs some assistance on the right type.
-        However, there probably will be some "compiler warnings" in the IDE, but not in the compiler itself.
-        That's what tests are for, right? :)
-
-        (see https://reinhard.codes/2015/07/14/project-lomboks-builder-annotation-and-generics/)
-     */
 
     @Test
     public void thatBuilderEmptyWorks() {
-        // Don't mind the IDE complaining about incompatible types - this code compiles.
         Page<ThingResponse> page = Page.<ThingResponse>builder()
             .build();
         assertNotNull(page);
@@ -34,7 +24,7 @@ public class PageTest {
         List<ThingResponse> data = new ArrayList<>();
 
         Page<ThingResponse> page = Page.<ThingResponse>builder()
-            .data(data) // No worries, this works!
+            .data(data)
             .build();
         assertNotNull(page);
         assertEquals(data, page.getData());
@@ -46,7 +36,7 @@ public class PageTest {
         data.add(ThingResponse.builder().build());
 
         Page<ThingResponse> page = Page.<ThingResponse>builder()
-            .data(data) // No worries, this works!
+            .data(data)
             .build();
         assertNotNull(page);
         assertNotNull(page.getData());
@@ -59,8 +49,21 @@ public class PageTest {
         List<ThingResponse> data = null;
 
         Page<ThingResponse> page = Page.<ThingResponse>builder()
-            .data(data) // No worries, this works!
+            .data(data)
             .build();
+        assertNotNull(page);
+        assertNotNull(page.getData());
+        assertTrue(page.getData().isEmpty());
+    }
+
+    @Test
+    public void thatBuilderDataWorksWithoutType() {
+        List data = new ArrayList();
+
+        Page page = Page.builder()
+            .data(data)
+            .build();
+
         assertNotNull(page);
         assertNotNull(page.getData());
         assertTrue(page.getData().isEmpty());
