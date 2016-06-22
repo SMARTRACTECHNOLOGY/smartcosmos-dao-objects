@@ -28,7 +28,7 @@ public class Page<T> {
         this.page = page;
     }
 
-    public static PageBuilder builder() {
+    public static <T>PageBuilder<T> builder() {
         return new PageBuilder<>();
     }
 
@@ -39,12 +39,12 @@ public class Page<T> {
         PageBuilder() {
         }
 
-        public Page.PageBuilder data(List<T> data) {
+        public Page.PageBuilder<T> data(List<T> data) {
             this.data = data;
             return this;
         }
 
-        public Page.PageBuilder page(PageInformation page) {
+        public Page.PageBuilder<T> page(PageInformation page) {
             this.page = page;
             return this;
         }
