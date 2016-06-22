@@ -33,9 +33,11 @@ public class Page<T> {
         It just needs some assistance on the right type.
         However, while Travis and the local machine were able to build the project and run tests, Jenkins wasn't for
         some reason. That's why the @Builder annotation is de-lomboked for now.
-        That's what tests are for, right? :)
 
         (see https://reinhard.codes/2015/07/14/project-lomboks-builder-annotation-and-generics/)
+
+        There is also a GitHub issue for the Lombok plugin:
+        https://github.com/mplushnikov/lombok-intellij-plugin/issues/127
      */
 
     public static <T>PageBuilder<T> builder() {
