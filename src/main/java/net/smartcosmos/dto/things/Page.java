@@ -19,7 +19,7 @@ public class Page<T> {
     private final PageInformation page;
 
     @ConstructorProperties({"data", "page"})
-    public Page(List<T> data, PageInformation page) {
+    protected Page(List<T> data, PageInformation page) {
         this.data = new ArrayList<>();
         if (data != null) {
             this.data.addAll(data);
