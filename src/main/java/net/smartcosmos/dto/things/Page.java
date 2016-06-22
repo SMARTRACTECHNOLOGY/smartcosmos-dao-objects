@@ -3,7 +3,6 @@ package net.smartcosmos.dto.things;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
-import lombok.Builder;
 import lombok.Data;
 
 import java.beans.ConstructorProperties;
@@ -19,7 +18,6 @@ public class Page<T> {
     private final List<T> data;
     private final PageInformation page;
 
-    @Builder
     @ConstructorProperties({"data", "page"})
     public Page(List<T> data, PageInformation page) {
         this.data = new ArrayList<>();
@@ -28,5 +26,35 @@ public class Page<T> {
         }
 
         this.page = page;
+    }
+
+    public static PageBuilder builder() {
+        return new PageBuilder<>();
+    }
+
+    public static class PageBuilder<T> {
+        private List<T> data;
+        private PageInformation page;
+
+        PageBuilder() {
+        }
+
+        public Page.PageBuilder data(List<T> data) {
+            this.data = data;
+            return this;
+        }
+
+        public Page.PageBuilder page(PageInformation page) {
+            this.page = page;
+            return this;
+        }
+
+        public Page<T> build() {
+            return new Page<>(data, page);
+        }
+
+        public String toString() {
+            return "net.smartcosmos.dto.things.Page.PageBuilder(data=" + this.data + ", page=" + this.page + ")";
+        }
     }
 }
