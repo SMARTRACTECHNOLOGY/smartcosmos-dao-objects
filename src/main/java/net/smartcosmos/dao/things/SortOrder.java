@@ -12,15 +12,27 @@ public enum SortOrder {
 
     private final String sortOrder;
 
+    /**
+     * Gets the String value of a sort order.
+     *
+     * @return the sort order string
+     */
     @Override
     public String toString() {
         return this.sortOrder;
     }
 
-    public static SortOrder fromString(String string) {
+    /**
+     * Gets the sort order enum entry for a String.
+     *
+     * @param sortOrderString the order string
+     *
+     * @return the corresponding sort order or {@code ASC} if {@code sortOrderString} is invalid.
+     */
+    public static SortOrder fromString(String sortOrderString) {
         String lcString = "";
-        if (string != null) {
-            lcString = string.toLowerCase();
+        if (sortOrderString != null) {
+            lcString = sortOrderString.toLowerCase();
         }
 
         return (DESC.toString().equals(lcString) ? DESC : ASC);
