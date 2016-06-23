@@ -2,6 +2,9 @@ package net.smartcosmos.dao.things;
 
 import lombok.AllArgsConstructor;
 
+/**
+ * Enum of possible sort orders.
+ */
 @AllArgsConstructor
 public enum SortOrder {
     ASC("asc"),
