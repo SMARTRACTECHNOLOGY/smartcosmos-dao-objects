@@ -1,14 +1,14 @@
 package net.smartcosmos.dao.things;
 
-import net.smartcosmos.dto.things.ThingCreate;
-import net.smartcosmos.dto.things.ThingResponse;
-import net.smartcosmos.dto.things.Page;
-import net.smartcosmos.dto.things.ThingUpdate;
-
-import javax.validation.ConstraintViolationException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.ConstraintViolationException;
+
+import net.smartcosmos.dto.things.Page;
+import net.smartcosmos.dto.things.ThingCreate;
+import net.smartcosmos.dto.things.ThingResponse;
+import net.smartcosmos.dto.things.ThingUpdate;
 
 public interface ThingDao {
 
@@ -198,21 +198,23 @@ public interface ThingDao {
      * Finds all things matching an input collection of URNs in the realm of a given tenant.
      *
      * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
      * @param urns a collection of system-assigned URNs
      * @return a list containing all found {@link ThingResponse} instances.
      */
-    List<ThingResponse> findByUrns(String tenantUrn, Collection<String> urns);
+    List<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns);
 
     /**
      * Finds all things matching an input collection of URNs in the realm of a given tenant (sorted).
      *
      * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
      * @param urns a collection of system-assigned URNs
      * @param sortOrder order to sort the result, can be {@code ASC} or {@code DESC}
      * @param sortBy name of the field to sort by
      * @return a list containing all found {@link ThingResponse} instances.
      */
-    List<ThingResponse> findByUrns(String tenantUrn, Collection<String> urns, SortOrder sortOrder, String sortBy);
+    List<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns, SortOrder sortOrder, String sortBy);
 
     // endregion
 
