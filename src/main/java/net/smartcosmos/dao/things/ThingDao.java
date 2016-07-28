@@ -1,7 +1,6 @@
 package net.smartcosmos.dao.things;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import javax.validation.ConstraintViolationException;
 
@@ -51,7 +50,7 @@ public interface ThingDao {
      * @param type the thing TYPE
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByType(
+    Page<ThingResponse> findByType(
         String tenantUrn,
         String type);
 
@@ -64,7 +63,7 @@ public interface ThingDao {
      * @param sortBy name of the field to sort by
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByType(
+    Page<ThingResponse> findByType(
         String tenantUrn,
         String type,
         SortOrder sortOrder,
@@ -130,7 +129,7 @@ public interface ThingDao {
      * @param urnStartsWith the first characters of the thing URN
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByTypeAndUrnStartsWith(
+    Page<ThingResponse> findByTypeAndUrnStartsWith(
         String tenantUrn,
         String type,
         String urnStartsWith);
@@ -145,7 +144,7 @@ public interface ThingDao {
      * @param sortBy name of the field to sort by
      * @return all things whose {@code urn} starts with {@code urnStartsWith}
      */
-    List<ThingResponse> findByTypeAndUrnStartsWith(
+    Page<ThingResponse> findByTypeAndUrnStartsWith(
         String tenantUrn,
         String type,
         String urnStartsWith,
@@ -202,7 +201,7 @@ public interface ThingDao {
      * @param urns a collection of system-assigned URNs
      * @return a list containing all found {@link ThingResponse} instances.
      */
-    List<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns);
+    Page<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns);
 
     /**
      * Finds all things matching an input collection of URNs in the realm of a given tenant (sorted).
@@ -214,7 +213,34 @@ public interface ThingDao {
      * @param sortBy name of the field to sort by
      * @return a list containing all found {@link ThingResponse} instances.
      */
-    List<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns, SortOrder sortOrder, String sortBy);
+    Page<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns, SortOrder sortOrder, String sortBy);
+
+    /**
+     * Finds all things matching an input collection of URNs in the realm of a given tenant (sorted).
+     *
+     * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
+     * @param urns a collection of system-assigned URNs
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @param sortOrder order to sort the result, can be {@code ASC} or {@code DESC}
+     * @param sortBy name of the field to sort by
+     * @return a list containing all found {@link ThingResponse} instances.
+     */
+    Page<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns, Integer page, Integer size, SortOrder sortOrder,
+                                          String sortBy);
+
+    /**
+     * Finds all things matching an input collection of URNs in the realm of a given tenant (sorted).
+     *
+     * @param tenantUrn the tenant URN
+     * @param type the thing TYPE
+     * @param urns a collection of system-assigned URNs
+     * @param page the number of the results page
+     * @param size the size of a results page
+     * @return a list containing all found {@link ThingResponse} instances.
+     */
+    Page<ThingResponse> findByTypeAndUrns(String tenantUrn, String type, Collection<String> urns, Integer page, Integer size);
 
     // endregion
 
@@ -226,7 +252,7 @@ public interface ThingDao {
      * @param tenantUrn the tenant URN
      * @return the list of {@link ThingResponse} instances in the realm
      */
-    List<ThingResponse> findAll(String tenantUrn);
+    Page<ThingResponse> findAll(String tenantUrn);
 
     /**
      * Return all things in the realm of a given tenant (sorted).
@@ -236,7 +262,7 @@ public interface ThingDao {
      * @param sortBy name of the field to sort by
      * @return the list of {@link ThingResponse} instances in the realm
      */
-    List<ThingResponse> findAll(String tenantUrn, SortOrder sortOrder, String sortBy);
+    Page<ThingResponse> findAll(String tenantUrn, SortOrder sortOrder, String sortBy);
 
     /**
      * Return all things in the realm of a given tenant (paged).
@@ -272,7 +298,7 @@ public interface ThingDao {
      * @param urn the thing URN
      * @return the list of deleted {@link ThingResponse} instances
      */
-    List<ThingResponse> delete(String tenantUrn, String type, String urn);
+    Optional<ThingResponse> delete(String tenantUrn, String type, String urn);
 
     // endregion
 }
