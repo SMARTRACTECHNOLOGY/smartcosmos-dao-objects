@@ -12,6 +12,11 @@ import net.smartcosmos.dto.things.ThingUpdate;
 
 public interface ThingDao {
 
+    public static final Integer DEFAULT_PAGE = 1;
+    public static final Integer DEFAULT_SIZE = 20;
+    public static final SortOrder DEFAULT_SORT_ORDER = SortOrder.ASC;
+    public static final String DEFAULT_SORT_BY = "created";
+
     // region Create
 
     /**
