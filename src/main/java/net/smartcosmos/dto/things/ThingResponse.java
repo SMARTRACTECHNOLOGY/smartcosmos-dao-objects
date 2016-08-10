@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties({"version"})
+@JsonIgnoreProperties({ "version" })
 public class ThingResponse {
 
     private static final int VERSION = 1;
@@ -23,8 +23,9 @@ public class ThingResponse {
     private final Boolean active;
 
     @Builder
-    @ConstructorProperties({"urn", "type", "tenantUrn", "active"})
+    @ConstructorProperties({ "urn", "type", "tenantUrn", "active" })
     public ThingResponse(String urn, String type, String tenantUrn, Boolean active) {
+
         this.urn = urn;
         this.type = type;
         this.active = active;

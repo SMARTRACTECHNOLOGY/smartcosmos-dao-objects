@@ -2,20 +2,19 @@ package net.smartcosmos.dto.things;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONObject;
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-
+import static org.junit.Assert.*;
 
 public class ThingResponseTest {
 
     @Test
     public void thatVersionIsSet() {
-        ThingResponse entity = ThingResponse.builder().build();
+
+        ThingResponse entity = ThingResponse.builder()
+            .build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -26,31 +25,37 @@ public class ThingResponseTest {
      */
     @Test(expected = NoSuchMethodException.class)
     public void thatVersionHasNoSetter() throws Exception {
+
         ThingResponse.class.getDeclaredMethod("setVersion", int.class);
     }
 
     @Test(expected = NoSuchMethodException.class)
     public void thatUrnHasNoSetter() throws Exception {
+
         ThingResponse.class.getDeclaredMethod("setUrn", int.class);
     }
 
     @Test(expected = NoSuchMethodException.class)
     public void thatTypeHasNoSetter() throws Exception {
+
         ThingResponse.class.getDeclaredMethod("setType", int.class);
     }
 
     @Test(expected = NoSuchMethodException.class)
     public void thatActiveHasNoSetter() throws Exception {
+
         ThingResponse.class.getDeclaredMethod("setActive", int.class);
     }
 
     @Test(expected = NoSuchMethodException.class)
     public void thatTenantUrnHasNoSetter() throws Exception {
+
         ThingResponse.class.getDeclaredMethod("setTenantUrn", int.class);
     }
 
     @Test
     public void thatObjectMapperIgnoresVersion() throws JsonProcessingException {
+
         ObjectMapper mapper = new ObjectMapper();
 
         ThingResponse response = ThingResponse.builder()
@@ -68,6 +73,7 @@ public class ThingResponseTest {
 
     @Test
     public void thatBuilderEmptyWorks() {
+
         ThingResponse thing = ThingResponse.builder()
             .build();
         assertNotNull(thing);
@@ -75,6 +81,7 @@ public class ThingResponseTest {
 
     @Test
     public void thatBuilderTypeWorks() {
+
         final String type = "type";
 
         ThingResponse thing = ThingResponse.builder()
@@ -86,6 +93,7 @@ public class ThingResponseTest {
 
     @Test
     public void thatBuilderTypeUrnWorks() {
+
         final String type = "type";
         final String urn = "urn";
 
@@ -100,6 +108,7 @@ public class ThingResponseTest {
 
     @Test
     public void thatBuilderTenantUrnWorks() {
+
         final String tenantUrn = "tenantUrn";
 
         ThingResponse thing = ThingResponse.builder()
@@ -111,6 +120,7 @@ public class ThingResponseTest {
 
     @Test
     public void thatBuilderActiveWorks() {
+
         final Boolean active = false;
 
         ThingResponse thing = ThingResponse.builder()
@@ -122,6 +132,7 @@ public class ThingResponseTest {
 
     @Test
     public void testAllArgsConstructor() {
+
         final String urn = "urn";
         final String type = "type";
         final Boolean active = true;

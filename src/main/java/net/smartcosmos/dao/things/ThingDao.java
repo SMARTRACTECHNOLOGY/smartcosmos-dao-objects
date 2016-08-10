@@ -272,7 +272,7 @@ public interface ThingDao {
     /**
      * Deletes a thing matching a specified type and URN in the realm of a given tenant.
      *
-     * @param tenantUrn  the tenant URN
+     * @param tenantUrn the tenant URN
      * @param type the thing TYPE
      * @param urn the thing URN
      * @return the list of deleted {@link ThingResponse} instances

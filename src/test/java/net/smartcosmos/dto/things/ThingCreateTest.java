@@ -1,11 +1,8 @@
 package net.smartcosmos.dto.things;
 
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Basic Unit Tests for the ThingCreate object...
@@ -15,14 +12,20 @@ public class ThingCreateTest {
 
     @Test
     public void thatThingCreateAlwaysHasActive() throws Exception {
-        ThingCreate thingCreate = ThingCreate.builder().urn("urn").type("type").build();
+
+        ThingCreate thingCreate = ThingCreate.builder()
+            .urn("urn")
+            .type("type")
+            .build();
 
         assertTrue(thingCreate.getActive());
     }
 
     @Test
     public void thatVersionIsSet() {
-        ThingCreate entity = ThingCreate.builder().build();
+
+        ThingCreate entity = ThingCreate.builder()
+            .build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -33,11 +36,13 @@ public class ThingCreateTest {
      */
     @Test(expected = NoSuchMethodException.class)
     public void thatVersionHasNoSetter() throws Exception {
+
         ThingCreate.class.getDeclaredMethod("setVersion", int.class);
     }
 
     @Test
     public void thatBuilderEmptyWorks() {
+
         ThingCreate thing = ThingCreate.builder()
             .build();
         assertNotNull(thing);
@@ -45,6 +50,7 @@ public class ThingCreateTest {
 
     @Test
     public void thatBuilderTypeWorks() {
+
         final String type = "type";
 
         ThingCreate thing = ThingCreate.builder()
@@ -56,6 +62,7 @@ public class ThingCreateTest {
 
     @Test
     public void thatBuilderTypeUrnWorks() {
+
         final String type = "type";
         final String urn = "urn";
 
@@ -70,6 +77,7 @@ public class ThingCreateTest {
 
     @Test
     public void thatBuilderActiveWorks() {
+
         final Boolean active = false;
 
         ThingCreate thing = ThingCreate.builder()
@@ -81,9 +89,11 @@ public class ThingCreateTest {
 
     @Test
     public void thatGetterSetterUrnWorks() {
+
         final String urn = "urn";
 
-        ThingCreate thing = ThingCreate.builder().build();
+        ThingCreate thing = ThingCreate.builder()
+            .build();
         assertNotNull(thing);
 
         thing.setUrn(urn);
@@ -92,9 +102,11 @@ public class ThingCreateTest {
 
     @Test
     public void thatGetterSetterTypeWorks() {
+
         final String type = "type";
 
-        ThingCreate thing = ThingCreate.builder().build();
+        ThingCreate thing = ThingCreate.builder()
+            .build();
         assertNotNull(thing);
 
         thing.setType(type);
@@ -103,9 +115,11 @@ public class ThingCreateTest {
 
     @Test
     public void thatGetterSetterActiveWorks() {
+
         final Boolean active = true;
 
-        ThingCreate thing = ThingCreate.builder().build();
+        ThingCreate thing = ThingCreate.builder()
+            .build();
         assertNotNull(thing);
 
         thing.setActive(active);
@@ -114,6 +128,7 @@ public class ThingCreateTest {
 
     @Test
     public void testAllArgsConstructor() {
+
         final String urn = "urn";
         final String type = "type";
         final Boolean active = true;

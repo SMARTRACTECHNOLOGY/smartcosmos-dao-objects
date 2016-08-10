@@ -1,13 +1,13 @@
 package net.smartcosmos.dto.things;
 
+import java.beans.ConstructorProperties;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.beans.ConstructorProperties;
 
 @NoArgsConstructor
 @Data
@@ -21,8 +21,9 @@ public class ThingUpdate {
     private Boolean active;
 
     @Builder
-    @ConstructorProperties({"active"})
+    @ConstructorProperties({ "active" })
     public ThingUpdate(Boolean active) {
+
         this.active = active;
 
         this.version = VERSION;
