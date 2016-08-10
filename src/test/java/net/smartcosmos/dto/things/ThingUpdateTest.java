@@ -1,16 +1,16 @@
 package net.smartcosmos.dto.things;
 
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class ThingUpdateTest {
 
     @Test
     public void thatVersionIsSet() {
-        ThingUpdate entity = ThingUpdate.builder().build();
+
+        ThingUpdate entity = ThingUpdate.builder()
+            .build();
 
         assertNotNull(entity.getVersion());
         assertEquals(1, entity.getVersion());
@@ -21,11 +21,13 @@ public class ThingUpdateTest {
      */
     @Test(expected = NoSuchMethodException.class)
     public void thatVersionHasNoSetter() throws Exception {
+
         ThingUpdate.class.getDeclaredMethod("setVersion", int.class);
     }
 
     @Test
     public void thatBuilderEmptyWorks() {
+
         ThingUpdate thing = ThingUpdate.builder()
             .build();
         assertNotNull(thing);
@@ -33,6 +35,7 @@ public class ThingUpdateTest {
 
     @Test
     public void thatBuilderActiveWorks() {
+
         final Boolean active = false;
 
         ThingUpdate thing = ThingUpdate.builder()
@@ -44,9 +47,11 @@ public class ThingUpdateTest {
 
     @Test
     public void thatGetterSetterActiveWorks() {
+
         final Boolean active = true;
 
-        ThingUpdate thing = ThingUpdate.builder().build();
+        ThingUpdate thing = ThingUpdate.builder()
+            .build();
         assertNotNull(thing);
 
         thing.setActive(active);
@@ -55,12 +60,14 @@ public class ThingUpdateTest {
 
     @Test
     public void testNoArgsConstructor() {
+
         ThingUpdate thing = new ThingUpdate();
         assertNotNull(thing);
     }
 
     @Test
     public void testAllArgsConstructor() {
+
         final Boolean active = true;
 
         ThingUpdate thing = new ThingUpdate(active);
