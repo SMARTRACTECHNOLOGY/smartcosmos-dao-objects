@@ -5,7 +5,6 @@ ifdef::env-github[:REPO: smartcosmos-dao-things]
 ifdef::env-github[:BRANCH: master]
 
 image::https://jenkins.smartcosmos.net/buildStatus/icon?job={USER}/{REPO}/{BRANCH}[Build Status, link=https://jenkins.smartcosmos.net/job/{USER}/job/{REPO}/job/{BRANCH}/]
-image::https://travis-ci.org/{USER}/{REPO}.svg?branch={BRANCH}[Build Status, link=https://travis-ci.org/{USER}/{REPO}]
 
 The SMART COSMOS DAO for Things provides an open source repository that forms the basis of the Client applications and
 the actual server implementations of the DTO (Data Transport Things) and DAO (Data Access Things) for dealing with
