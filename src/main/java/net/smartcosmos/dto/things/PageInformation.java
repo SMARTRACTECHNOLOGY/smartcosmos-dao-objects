@@ -1,6 +1,5 @@
 package net.smartcosmos.dto.things;
 
-import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-@ApiModel(description = "Meta information on paged responses received.")
 public class PageInformation {
 
     // primitive types because of default values
